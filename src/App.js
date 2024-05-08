@@ -1,18 +1,14 @@
-import React from 'react';
-import Navbar from './components/navbar';
-import Banner from './components/banner';
-import Collection from './components/collection';
-import Footer from './components/footer';
-import '@fortawesome/fontawesome-free/css/all.css';
+import React from "react";
+import { RouterProvider, Outlet, createBrowserRouter, Routes, Route, Router } from "react-router-dom";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
-function App() {
+const App = () => {
   return (
     <div>
       <Navbar />
-      <Banner />
-      <Collection />
+      <Outlet />
       <Footer />
-      
     </div>
   );
 }

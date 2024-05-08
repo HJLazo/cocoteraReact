@@ -1,7 +1,7 @@
 import React from 'react';
-import photo1 from '../assets/imgs/coleccion/foto1.jpeg';
-import photo2 from '../assets/imgs/coleccion/foto2.jpeg';
-import photo3 from '../assets/imgs/coleccion/foto3.jpeg';
+import photo1 from '../../assets/imgs/coleccion/foto1.jpeg';
+import photo2 from '../../assets/imgs/coleccion/foto2.jpeg';
+import photo3 from '../../assets/imgs/coleccion/foto3.jpeg';
 
 const Collection = () => {
   const pictures = [photo1, photo2, photo3];
