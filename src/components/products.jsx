@@ -5,7 +5,7 @@ import ProductCollection from "../utils/productCollection";
 const Products = () => {
 
   return (
-    <div className="d-flex gap-5 m-5">
+    <div className="d-flex gap-5 m-5 products">
       <div className="">
         { ProductCollection.map((product) => (
           <div key={product.id} className="card" style={{ width: '18rem' }}>
