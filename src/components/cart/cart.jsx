@@ -6,8 +6,7 @@ const Cart = () => {
   const { cartItems, removeFromCart, addProductQuantity, removeProductQuantity } = useCart();
 
   return (
-    <div>
-      <h2>Shopping Cart</h2>
+    <div className="m-5">
       {cartItems.length > 0 ? (
         <Table products={cartItems}
          removeFromCart={removeFromCart} 
@@ -15,7 +14,7 @@ const Cart = () => {
          removeProductQuantity={removeProductQuantity}
          />
       ) : (
-        <p>Your cart is empty.</p>
+        <p>No tiene Productos</p>
       )}
     </div>
   );

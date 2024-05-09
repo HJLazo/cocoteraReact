@@ -14,11 +14,11 @@ const links = [
     totalProducts: false
   },
   {
-    text: "Products",
+    text: "Productos",
     to: "/products",
     totalProducts: false
   },{
-    text: "Cart",
+    text: "Carrito de compras",
     to: "/cart",
     totalProducts: true
   }
