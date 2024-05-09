@@ -13,7 +13,11 @@ const links = [
   {
     text: "Products",
     to: "/products"
+  },{
+    text: "Cart",
+    to: "/cart"
   }
+
 ]
 
 const Navbar = () => {

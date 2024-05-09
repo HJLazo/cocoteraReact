@@ -1,9 +1,8 @@
-import React, {useState} from "react";
-import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import React from "react";
+import { Outlet, NavLink } from "react-router-dom";
 import ProductCollection from "../utils/productCollection";
 
 const Products = () => {
-  const navigate = useNavigate();
 
   return (
     <div className="d-flex gap-5 m-5">
@@ -22,7 +21,8 @@ const Products = () => {
           <div>
         </div>
       </div>
-      <Outlet context={ProductCollection} />
+      
+        <Outlet context={ProductCollection} />
     </div>
   );
 }
