@@ -10,15 +10,33 @@ class Product {
       this.name = name;
       this.description = this.randomDescription();
       this.url = url;
-      this.category = this.category;
+      this.category = category;
       this.price = this.randomPrice();
       this.discount = this.hastDiscount();
       this.discountPrice = this.discount ? this.price - (this.price * 0.15) : this.price;
+      this.quantity = 0;
   }
 
   hastDiscount() {
     return Math.random() >= 0.7;
     }
+
+  addQuantity(quantity) {
+    if (this.quantity === 0){
+      this.quantity++;
+    } else {
+      this.quantity += quantity;
+    }
+  }
+
+  removeQuantity(quantity) {
+    if (this.quantity > 0) {
+      this.quantity -= quantity;
+      if (this.quantity < 0 ) {
+        this.quantity = 0;
+      }
+    }
+  }
 
   randomPrice() {
     return Product.prices[Math.floor(Math.random() * Product.prices.length)];

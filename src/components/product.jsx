@@ -10,6 +10,7 @@ const Product = () => {
   const handleAddToCart = () => {
     addToCart(selectedProduct);  
     navigate("/cart");
+    selectedProduct.addQuantity(1);
   };
 
   return (

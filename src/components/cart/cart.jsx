@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "./cartProvider"; // Adjust the path as necessary
 
 const Cart = () => {
@@ -9,9 +9,9 @@ const Cart = () => {
       <h2>Shopping Cart</h2>
       {cartItems.length > 0 ? (
         <ul>
-          {cartItems.map((item, index) => (
-            <li key={index}>
-              {item.name} - {item.description} - ${item.price}
+          {cartItems.map((item) => (
+            <li key={item.id}>
+              {item.name} - ${item.price}- {item.quantity}
             </li>
           ))}
         </ul>

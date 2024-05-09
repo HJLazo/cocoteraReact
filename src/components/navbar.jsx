@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useCart } from './cart/cartProvider'; 
 
 const links = [
   {
@@ -15,12 +16,14 @@ const links = [
     to: "/products"
   },{
     text: "Cart",
-    to: "/cart"
+    to: "/cart",
+    total: 0,
   }
 
 ]
 
 const Navbar = () => {
+  const { totalProducts } = useCart();
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light" >
       <ul className="navbar-nav mr-auto">
