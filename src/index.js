@@ -6,8 +6,9 @@ import Features from './components/features';
 import Products from './components/products';
 import Product from './components/product';
 import { RouterProvider, createBrowserRouter, Routes, Route, Router, Outlet } from "react-router-dom";
-
+import ProductCollection from './utils/productCollection';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
           {
             path: '/products/:productId',
             element: <Product />,
+            loader: ({ params }) => {
+              const selectedProduct = ProductCollection.find((product) => product.id === parseInt(params.productId));
+              return { selectedProduct }
+            }
           }
         ]
       }

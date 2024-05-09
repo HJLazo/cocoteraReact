@@ -1,10 +1,10 @@
 import React from 'react';
-import photo1 from '../../assets/imgs/coleccion/foto1.jpeg';
-import photo2 from '../../assets/imgs/coleccion/foto2.jpeg';
-import photo3 from '../../assets/imgs/coleccion/foto3.jpeg';
+import photo1 from '../../assets/imgs/inicio/oferta1.jpeg';
+import photo2 from '../../assets/imgs/inicio/oferta2.jpeg';
+import photo3 from '../../assets/imgs/inicio/oferta3.jpeg';
 
 const Collection = () => {
-  const pictures = [photo1, photo2, photo3];
+  const pictures = [photo2, photo1, photo3];
 
   return (
     <div className='d-flex justify-content-between mt-5 px-3'>

@@ -1,34 +1,28 @@
 import React, {useState} from "react";
-import { Link, Outlet, NavLink } from "react-router-dom";
-import photo1 from '../assets/imgs/coleccion/foto1.jpeg';
-import photo2 from '../assets/imgs/coleccion/foto2.jpeg';
-import photo3 from '../assets/imgs/coleccion/foto3.jpeg';
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import ProductCollection from "../utils/productCollection";
 
 const Products = () => {
-  const [product, setProduct] = useState('');
-  // const collection = [photo1,photo2,photo3]
-  const collection = [1,2,3,4,5]
-
-
+  const navigate = useNavigate();
 
   return (
-    <div className="d-flex">
+    <div className="d-flex gap-5 m-5">
       <div className="">
-        { collection.map((index) => (
-          <div key={index} className="card" style={{ width: '18rem' }}>
-            <NavLink key={index} 
-            to={`/products/${index}`}
+        { ProductCollection.map((product) => (
+          <div key={product.id} className="card" style={{ width: '18rem' }}>
+            <NavLink
+            to={`/products/${product.id}`}
             className={({isActive}) => { return isActive ? 'nav-link disabled' : 'nav-link'}}
             >
-              Foto {index}
+              {product.name}
             </NavLink>
           </div>
               ))
-              }
-      <div>
-        <Outlet />
+        }
+          <div>
+        </div>
       </div>
-      </div>
+      <Outlet context={ProductCollection} />
     </div>
   );
 }

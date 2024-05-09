@@ -21,10 +21,10 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light" >
       <ul className="navbar-nav mr-auto">
         {links.map((link, index) => (
-            <li>
+            <li key={index}>
             <NavLink
             className="nav-link"
-            key={index} to={link.to} >
+             to={link.to} >
               {link.text}
             </NavLink>
           </li>
