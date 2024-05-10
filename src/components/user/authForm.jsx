@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { usePerson } from "./userProvider";
+import { useCart } from "../cart/cartProvider";
 import User from "../../utils/user";
 import validateFormData from "../../utils/validationFormData";
 
 const AuthForm = () => {
-  const { addUser, signIn, currentUser } = usePerson(); 
+  const { addUser, signIn, currentUser, attachCartToUser } = usePerson(); 
+  const { cartItems } = useCart();
   const [isSignUp, setIsSignUp] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
@@ -28,10 +30,11 @@ const AuthForm = () => {
     }
     if (isSignUp) {
       const newUser = new User(formData.name, formData.email, formData.password, formData.confirmPassword);
-      addUser(newUser);
+      addUser(newUser, cartItems);
     } else {
-      signIn(formData.email, formData.password)
+      signIn(formData.email, formData.password, cartItems)
     }
+
     setFormData({
       name: "",
       email: "",
