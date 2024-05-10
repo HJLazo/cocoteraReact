@@ -22,7 +22,7 @@ const links = [
 ]
 
 const Navbar = () => {
-  const { cartItems, currentUser, logOut } = useInformation();
+  const { totalProducts, currentUser, logOut } = useInformation();
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light" >
       <ul className="navbar-nav mr-auto">
@@ -32,7 +32,7 @@ const Navbar = () => {
             <NavLink className="nav-link" to={link.to}>
               {link.text}
                 <span className="px-1">
-                  {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
+                  {totalProducts}
                 </span>
               </NavLink>
           </li>

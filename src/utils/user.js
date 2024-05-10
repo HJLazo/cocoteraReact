@@ -7,35 +7,36 @@ class User {
       this.email = email;
       this.password = password;
       this.passwordConfirm = passwordConfirm;
-      this.cart = null;
-      this.signIn = false;
+      this.cart = [];
   }
 
-  addCart(cart) {
-    if (this.cart === null) {
-      this.cart = cart;
+  addCart(newCart) {
+    if (this.cart.length === 0) {
+      this.cart = [...newCart];
     } else {
-      cart.forEach(element => {
-        element.quantity += this.cart.array.find(item => item.id === element.id).quantity;  
+      newCart.forEach(newItem => {
+        const existingItemIndex = this.cart.findIndex(item => item.id === newItem.id);
+        if (existingItemIndex >= 0) {
+          this.cart[existingItemIndex].quantity = newItem.quantity;
+        } else {
+          this.cart.push(newItem);
+        }
       });
     }
   }
+  
+  addAllCart(newCart) {
+    this.cart = [...newCart];
+  }
 
   removeCart() {
-    this.cart = null;
+    this.cart = [];
   }
 
   getCart() {
     return this.cart;
   }
   
-  logOut() {
-    this.signIn = false;
-  }
-
-  logIn() {
-    this.signIn = true;
-  }
 }
 
 export default User;

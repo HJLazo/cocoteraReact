@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useInformation } from '../parent_information/infoProvider';
 import Table from "./table";
 
 const Cart = () => {
   const { cartItems, currentUser, removeFromCart, addProductQuantity, removeProductQuantity } = useInformation();
-
-  // useState(() => {
-  //   if (currentUser && currentUser.cart) {
-  //     setNewCart(currentUser.cart);
-  //   }
-  // } , [currentUser, cartItems]);
+  useEffect(() => {
+    console.log('Cart updated:', cartItems);
+  }, [cartItems, currentUser]);
 
   return (
     <div className="d-flex flex-grow-1">

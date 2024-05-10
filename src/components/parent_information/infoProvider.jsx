@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const InfoContext = createContext();
 
@@ -8,6 +8,17 @@ export const InfoProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [totalProducts, setTotalProducts] = useState(0);
+
+  useEffect(() => {
+    if (currentUser) {
+      setCartItems(currentUser.getCart() || []);
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
+    setTotalProducts(cartItems.reduce((acc, item) => acc + item.quantity, 0));
+  }, [cartItems]);
 
   const addToCart = (product) => {
     setCartItems(currentItems => {
@@ -41,21 +52,12 @@ export const InfoProvider = ({ children }) => {
     );
   };
 
-  const totalProducts = () => {
-    return cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
-  };
-
-  const setNewCart = (newCart) => {
-    setCartItems(newCart);
-  }
-
-  const addUser = (user, cartItems) => {
+  const addUser = (user) => {
     setUsers((prevUsers) => {
       const userExists = prevUsers.find(person => person.email === user.email);
       if (userExists) {
         return prevUsers;
       } else {
-        user.logIn();
         user.addCart(cartItems);
         setCurrentUser(user);
         return [...prevUsers, user];
@@ -63,7 +65,7 @@ export const InfoProvider = ({ children }) => {
     });
   };
 
-  const signIn = (email, password, cartItems) => {
+  const signIn = (email, password) => {
     const user = users.find(user => user.email === email && user.password === password);
     if (user) {
       user.addCart(cartItems);
@@ -74,7 +76,8 @@ export const InfoProvider = ({ children }) => {
   }
 
   const logOut = () => {
-    currentUser.logOut();
+    currentUser.addAllCart(cartItems);
+    setCartItems([]);
     setCurrentUser(null);
   }
 
@@ -86,7 +89,6 @@ export const InfoProvider = ({ children }) => {
       addProductQuantity, 
       removeProductQuantity,
       totalProducts, 
-      setNewCart,
       addUser,
       signIn,
       currentUser,
