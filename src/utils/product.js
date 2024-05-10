@@ -12,14 +12,18 @@ class Product {
       this.url = url;
       this.category = category;
       this.price = this.randomPrice();
-      this.discount = this.hastDiscount();
-      this.discountPrice = this.discount ? this.price - (this.price * 0.15) : this.price;
+      this.discount = this.hasDiscount();
+      this.discountPrice = this.discount > 0 ? this.price - (this.price * this.discount/100) : this.price;
       this.quantity = 0;
   }
 
-  hastDiscount() {
-    return Math.random() >= 0.7;
+  hasDiscount() {
+    if (Math.random() >= 0.65){
+      return this.randomDiscount();
+    } else {
+      return 0;
     }
+  }
 
   addQuantity(quantity) {
     if (this.quantity === 0){
@@ -40,6 +44,10 @@ class Product {
 
   randomPrice() {
     return Product.prices[Math.floor(Math.random() * Product.prices.length)];
+  }
+
+  randomDiscount() {
+    return Product.numberWords[Math.floor(Math.random() * Product.numberWords.length)];
   }
   
   randomDescription() {

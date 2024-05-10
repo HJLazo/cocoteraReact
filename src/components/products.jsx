@@ -23,6 +23,8 @@ const Products = () => {
                   action
                 >
                     {product.name}
+                    { product.discount ? <span className="badge bg-danger mx-3">{product.discount}% OFF</span> : null
+                    }
                 </ListGroup.Item>
               </NavLink>
                   ))
