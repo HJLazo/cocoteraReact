@@ -43,13 +43,13 @@ const Navigation = () => {
           <NavLink className="nav-link" to={products.to}>
             {products.text}
           </NavLink>
-          <NavLink  to={cart.to} className="nav-link">
-            {cart.text}
-          </NavLink>
           <NavLink  to={about.to} className="nav-link">
             {about.text}
           </NavLink>
-   
+          <NavLink  to={cart.to} className="nav-link">
+            <i class="fa-solid fa-cart-shopping mx-1"></i>
+             { totalProducts ? totalProducts : null }
+          </NavLink>
         </Nav>
       </Navbar.Collapse>
 
