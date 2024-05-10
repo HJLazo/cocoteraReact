@@ -1,11 +1,10 @@
 import React from "react";
-import banner from '../../assets/imgs/banner_otros.jpeg';
 
 const Banner = () => {
   return(
     <div className="">
       <div>
-        <img src={banner} className="card-img" alt="..." />
+        <img src='https://res.cloudinary.com/wusinho1/image/upload/v1715382527/banner_otros_fmzpnb.jpg' className="card-img" alt="..." />
       </div>
     </div>
   )

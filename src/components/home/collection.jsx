@@ -1,10 +1,9 @@
 import React from 'react';
-import photo1 from '../../assets/imgs/inicio/oferta1.jpeg';
-import photo2 from '../../assets/imgs/inicio/oferta2.jpeg';
-import photo3 from '../../assets/imgs/inicio/oferta3.jpeg';
 
 const Collection = () => {
-  const pictures = [photo2, photo1, photo3];
+  const pictures = ['https://res.cloudinary.com/wusinho1/image/upload/v1715382595/oferta1_bqasik.jpg',
+  'https://res.cloudinary.com/wusinho1/image/upload/v1715382595/oferta2_x6ockf.jpg',
+  'https://res.cloudinary.com/wusinho1/image/upload/v1715382596/oferta3_ldkpdx.jpg'];
 
   return (
     <div className='d-flex justify-content-between my-5 px-3'>

@@ -1,9 +1,4 @@
 import React from "react";
-import casacas from "../../assets/imgs/inicio/casacas.png"
-import faldas from "../../assets/imgs/inicio/faldas.png"
-import jeans from "../../assets/imgs/inicio/jeans.png"
-import shorts from "../../assets/imgs/inicio/shorts.png"
-
 
 const AboutUs = () => {
   return (
@@ -23,9 +18,9 @@ const AboutUs = () => {
             </p>
           </div>
           <div>
-            <img src={shorts} alt="about us" style={{height: '180px'}}/>
-            <img src={casacas} alt="about us" style={{height: '180px'}}/>
-            <img src={jeans} alt="about us" style={{height: '180px'}}/>
+            <img src='https://res.cloudinary.com/wusinho1/image/upload/v1715382595/casacas_uf9u25.png' alt="about us" style={{height: '180px'}}/>
+            <img src='https://res.cloudinary.com/wusinho1/image/upload/v1715382596/faldas_jflbph.png' alt="about us" style={{height: '180px'}}/>
+            <img src='https://res.cloudinary.com/wusinho1/image/upload/v1715382596/faldas_jflbph.png' alt="about us" style={{height: '180px'}}/>
           </div>
         </div>
       </div>
