@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { usePerson } from "./userProvider";
 import User from "../../utils/user";
+import validateFormData from "../../utils/validationFormData";
 
 const AuthForm = () => {
   const { addUser, signIn, currentUser } = usePerson(); 
@@ -11,6 +12,7 @@ const AuthForm = () => {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,16 +21,24 @@ const AuthForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const validationErrors = validateFormData(formData, isSignUp);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
     if (isSignUp) {
-      if (formData.password !== formData.confirmPassword || formData.name.trim() === "") {
-        alert("Passwords do not match!");
-        return;
-      }
       const newUser = new User(formData.name, formData.email, formData.password, formData.confirmPassword);
       addUser(newUser);
     } else {
       signIn(formData.email, formData.password)
     }
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+    setErrors({});
   };
 
   const toggleMode = () => {
@@ -39,23 +49,26 @@ const AuthForm = () => {
       password: "",
       confirmPassword: "",
     });
+    setErrors({});
   };
 
   return (
     <div className="auth-form-container">
-      <h2>{isSignUp ? "Sign Up" : "Sign In"}</h2>
-      <form onSubmit={handleSubmit}>
+      <h2>{isSignUp ? "Registrate" : "Logeate"}</h2>
+      <form 
+      className="p-2"
+      onSubmit={handleSubmit}>
         {isSignUp && (
           <div className="form-group">
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Nombre:</label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              required
             />
+            {errors.name && <p className="error">{errors.name}</p>}
           </div>
         )}
         <div className="form-group">
@@ -66,39 +79,39 @@ const AuthForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            required
           />
+          {errors.email && <p className="error">{errors.email}</p>}
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Contraseña:</label>
           <input
             type="password"
             id="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
-            required
           />
+           {errors.password && <p className="error">{errors.password}</p>}
         </div>
         {isSignUp && (
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <label htmlFor="confirmPassword">Confirmar Contraseña:</label>
             <input
               type="password"
               id="confirmPassword"
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              required
             />
+             {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
           </div>
         )}
-        <button type="submit" className="btn btn-primary">
-          {isSignUp ? "Sign Up" : "Sign In"}
+        <button type="submit" className="btn btn-primary mt-2">
+          {isSignUp ? "Registrate" : "Logeate"}
         </button>
       </form>
       <button onClick={toggleMode} className="btn btn-link">
-        {isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}
+        {isSignUp ? "Tienes una cuenta? Logeate" : "No tienes cuenta? Registrate"}
       </button>
     </div>
   );
