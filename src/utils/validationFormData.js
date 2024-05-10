@@ -1,9 +1,10 @@
 const validateFormData = (formData, isSignUp) => {
   const errors = {};
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (!formData.email) {
     errors.email = "Email es requerido";
-  } else if (!/[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)[.][a-zA-Z]{2,5}/.test(formData.email)) {
+  } else if (!emailRegex.test(formData.email)) {
     errors.email = "Email es invalido";
   }
 
