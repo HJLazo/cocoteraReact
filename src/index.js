@@ -10,7 +10,7 @@ import AboutUs from './components/about/aboutUs';
 import { RouterProvider, createBrowserRouter, Routes, Route, Router, Outlet } from "react-router-dom";
 import ProductCollection from './utils/productCollection';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './assets/style/app/app.css';
 
 const router = createBrowserRouter([
   {

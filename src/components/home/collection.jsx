@@ -7,7 +7,7 @@ const Collection = () => {
   const pictures = [photo2, photo1, photo3];
 
   return (
-    <div className='d-flex justify-content-between mt-5 px-3'>
+    <div className='d-flex justify-content-between my-5 px-3'>
       {pictures.map((picture, index) => {
         return (
           <div key={index} className="card" style={{ width: '18rem' }}>

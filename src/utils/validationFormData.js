@@ -3,7 +3,7 @@ const validateFormData = (formData, isSignUp) => {
 
   if (!formData.email) {
     errors.email = "Email es requerido";
-  } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+  } else if (!/[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)[.][a-zA-Z]{2,5}/.test(formData.email)) {
     errors.email = "Email es invalido";
   }
 

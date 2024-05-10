@@ -6,7 +6,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const home = {
     text: "Cocotera",
@@ -47,7 +46,7 @@ const Navigation = () => {
             {about.text}
           </NavLink>
           <NavLink  to={cart.to} className="nav-link">
-            <i class="fa-solid fa-cart-shopping mx-1"></i>
+            <i className="fa-solid fa-cart-shopping mx-1"></i>
              { totalProducts ? totalProducts : null }
           </NavLink>
         </Nav>
