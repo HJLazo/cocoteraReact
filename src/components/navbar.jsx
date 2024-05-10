@@ -9,7 +9,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const home = {
-    text: "Home",
+    text: "Cocotera",
     to: "/",
   }
 
@@ -22,7 +22,6 @@ const cart ={
     text: "Carrito de compras",
     to: "/cart",
   }
-
 
 const about ={
   text: "About Us",
@@ -38,8 +37,6 @@ const Navigation = () => {
         <NavLink className="nav-link" to={home.to}>
           {home.text}
         </NavLink>
-
-
       </Navbar.Brand>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
@@ -52,31 +49,10 @@ const Navigation = () => {
           <NavLink  to={about.to} className="nav-link">
             {about.text}
           </NavLink>
+   
         </Nav>
-
       </Navbar.Collapse>
 
-
-        {/* <ul className="navbar-nav mr-auto">
-          { links.map((link, index) => (
-            link.totalProducts ?
-            <li key={index} className="nav-item">
-              <NavLink className="nav-link" to={link.to}>
-                {link.text}
-                  <span className="px-1">
-                    {totalProducts}
-                  </span>
-                </NavLink>
-            </li>
-              :
-            <li key={index} className="nav-item">
-              <NavLink className="nav-link" to={link.to}>
-                {link.text}
-                </NavLink>
-            </li>
-          ))
-          }
-        </ul> */}
         <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           {currentUser ? currentUser.name : "Registrate / Inicia sesion"}

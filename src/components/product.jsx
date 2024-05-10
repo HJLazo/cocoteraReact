@@ -15,7 +15,7 @@ const Product = () => {
   };
 
   return (
-    <div className="card" style={{ width: '18rem' }}>
+    <div className="card bg-light" style={{ width: '18rem' }}>
       <img src={selectedProduct.url} alt="Selected Product" />
       <div className="card-body">
         <h5>{selectedProduct.name}</h5>
