@@ -1,7 +1,6 @@
 import React from "react";
-// import { useCart } from './cart/cartProvider'; // Make sure the path is correct
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { useInformation } from './parent_information/infoProvider'; // Make sure the path is correct
+import { useInformation } from './parent_information/infoProvider';
 
 const Product = () => {
   const { selectedProduct } = useLoaderData();
