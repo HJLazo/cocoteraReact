@@ -6,16 +6,18 @@ const Cart = () => {
   const { cartItems, removeFromCart, addProductQuantity, removeProductQuantity } = useCart();
 
   return (
-    <div className="m-5">
-      {cartItems.length > 0 ? (
-        <Table products={cartItems}
-         removeFromCart={removeFromCart} 
-         addProductQuantity={addProductQuantity}
-         removeProductQuantity={removeProductQuantity}
-         />
-      ) : (
-        <p>No tiene Productos</p>
-      )}
+    <div className="d-flex flex-grow-1">
+      <div className="m-5">
+        {cartItems.length > 0 ? (
+          <Table products={cartItems}
+          removeFromCart={removeFromCart} 
+          addProductQuantity={addProductQuantity}
+          removeProductQuantity={removeProductQuantity}
+          />
+        ) : (
+          <p>No tiene Productos</p>
+        )}
+      </div>
     </div>
   );
 };

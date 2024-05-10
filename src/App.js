@@ -3,20 +3,20 @@ import { RouterProvider, Outlet, createBrowserRouter, Routes, Route, Router } fr
 import { CartProvider } from "./components/cart/cartProvider";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
-// import '../src/assets/style/app/app.css';
+import { UserProvider } from "./components/user/userProvider";
 
 const App = () => {
   return (
     <div className="d-flex flex-column vh-100">
-      <CartProvider>
-        <div className="d-flex flex-column flex-grow-1" >
-            <Navbar />
-            <div className="d-flex flex-grow-1">
-              <Outlet />
-            </div>
-            <Footer />
-        </div>
-      </CartProvider>
+      <UserProvider>
+        <CartProvider>
+          <div className="d-flex flex-column flex-grow-1" >
+              <Navbar />
+                <Outlet />
+              <Footer />
+          </div>
+        </CartProvider>
+      </UserProvider>
     </div>
   );
 }

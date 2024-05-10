@@ -1,16 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useCart } from './cart/cartProvider'; 
+import AuthForm from '../components/user/authForm';
 
 const links = [
   {
     text: "Home",
     to: "/",
-    totalProducts: false
-  },
-  {
-    text: "Features",
-    to: "/features",
     totalProducts: false
   },
   {
