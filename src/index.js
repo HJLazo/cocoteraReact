@@ -6,6 +6,7 @@ import Features from './components/features';
 import Products from './components/products';
 import Product from './components/product';
 import Cart from './components/cart/cart';
+import AboutUs from './components/about/aboutUs';
 import { RouterProvider, createBrowserRouter, Routes, Route, Router, Outlet } from "react-router-dom";
 import ProductCollection from './utils/productCollection';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: '/cart',
         element: <Cart />,
+      },
+      {
+        path: '/about',
+        element: <AboutUs />,
       }
   
     ]

@@ -1,28 +1,33 @@
 import React from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import ProductCollection from "../utils/productCollection";
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const Products = () => {
 
   return (
     <div className="d-flex flex-grow-1">
       <div className="d-flex gap-5 m-5 products">
-        <div className="">
+        <ListGroup>
           { ProductCollection.map((product) => (
-            <div key={product.id} className="card" style={{ width: '18rem' }}>
-              <NavLink
+            <NavLink
+              key={product.id}
               to={`/products/${product.id}`}
               className={({isActive}) => { return isActive ? 'nav-link disabled' : 'nav-link'}}
+              style={{ width: '18rem' }}
+            >
+              <ListGroup.Item
+                variant='light'
+                action
               >
-                {product.name}
-              </NavLink>
-            </div>
+                  {product.name}
+              </ListGroup.Item>
+            </NavLink>
                 ))
           }
             <div>
           </div>
-        </div>
-        
+          </ListGroup>
           <Outlet context={ProductCollection} />
       </div>
     </div>
