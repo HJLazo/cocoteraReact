@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useCart } from './cart/cartProvider';
-import { usePerson } from '../components/user/userProvider';
+import { useInformation } from "./parent_information/infoProvider";
 import AuthForm from '../components/user/authForm';
 import Dropdown from 'react-bootstrap/Dropdown';
 
@@ -23,8 +22,7 @@ const links = [
 ]
 
 const Navbar = () => {
-  const { cartItems } = useCart();
-  const { currentUser, logOut } = usePerson();
+  const { cartItems, currentUser, logOut } = useInformation();
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light" >
       <ul className="navbar-nav mr-auto">

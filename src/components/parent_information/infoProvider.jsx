@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState } from 'react';
 
-const CartContext = createContext();
+const InfoContext = createContext();
 
-export const useCart = () => useContext(CartContext);
+export const useInformation = () => useContext(InfoContext);
 
-export const CartProvider = ({ children }) => {
+export const InfoProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [users, setUsers] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
@@ -44,9 +45,53 @@ export const CartProvider = ({ children }) => {
     return cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
   };
 
+  const setNewCart = (newCart) => {
+    setCartItems(newCart);
+  }
+
+  const addUser = (user, cartItems) => {
+    setUsers((prevUsers) => {
+      const userExists = prevUsers.find(person => person.email === user.email);
+      if (userExists) {
+        return prevUsers;
+      } else {
+        user.logIn();
+        user.addCart(cartItems);
+        setCurrentUser(user);
+        return [...prevUsers, user];
+      }
+    });
+  };
+
+  const signIn = (email, password, cartItems) => {
+    const user = users.find(user => user.email === email && user.password === password);
+    if (user) {
+      user.addCart(cartItems);
+      setCurrentUser(user);
+      return user;
+    }
+    return null;
+  }
+
+  const logOut = () => {
+    currentUser.logOut();
+    setCurrentUser(null);
+  }
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, addProductQuantity, removeProductQuantity, totalProducts }}>
+    <InfoContext.Provider value={{ 
+      cartItems, 
+      addToCart, 
+      removeFromCart, 
+      addProductQuantity, 
+      removeProductQuantity,
+      totalProducts, 
+      setNewCart,
+      addUser,
+      signIn,
+      currentUser,
+      logOut }}>
       {children}
-    </CartContext.Provider>
+    </InfoContext.Provider>
   );
 };

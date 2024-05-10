@@ -12,7 +12,13 @@ class User {
   }
 
   addCart(cart) {
-    this.cart = cart;
+    if (this.cart === null) {
+      this.cart = cart;
+    } else {
+      cart.forEach(element => {
+        element.quantity += this.cart.array.find(item => item.id === element.id).quantity;  
+      });
+    }
   }
 
   removeCart() {

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { usePerson } from "./userProvider";
-import { useCart } from "../cart/cartProvider";
+import { useInformation } from '../parent_information/infoProvider';
 import User from "../../utils/user";
 import validateFormData from "../../utils/validationFormData";
 
 const AuthForm = () => {
-  const { addUser, signIn, currentUser, attachCartToUser } = usePerson(); 
-  const { cartItems } = useCart();
+  const { cartItems, addUser, signIn } = useInformation();
   const [isSignUp, setIsSignUp] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
