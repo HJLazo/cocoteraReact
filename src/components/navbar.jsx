@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useCart } from './cart/cartProvider'; 
+import { useCart } from './cart/cartProvider';
+import { usePerson } from '../components/user/userProvider';
 import AuthForm from '../components/user/authForm';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const links = [
   {
@@ -22,6 +24,7 @@ const links = [
 
 const Navbar = () => {
   const { cartItems } = useCart();
+  const { currentUser, logOut } = usePerson();
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light" >
       <ul className="navbar-nav mr-auto">
@@ -44,6 +47,19 @@ const Navbar = () => {
         ))
         }
       </ul>
+        <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          {currentUser ? currentUser.name : "Registrate / Inicia sesion"}
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          { currentUser ? 
+            <Dropdown.Item onClick={() => {logOut()}}>Cerrar sesion</Dropdown.Item>
+            :
+          <AuthForm/>
+          }
+        </Dropdown.Menu>
+      </Dropdown>
     </nav>
   );
 }

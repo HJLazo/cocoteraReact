@@ -26,6 +26,10 @@ class User {
   logOut() {
     this.signIn = false;
   }
+
+  logIn() {
+    this.signIn = true;
+  }
 }
 
 export default User;

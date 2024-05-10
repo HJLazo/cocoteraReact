@@ -3,7 +3,7 @@ import { usePerson } from "./userProvider";
 import User from "../../utils/user";
 
 const AuthForm = () => {
-  const { addUser } = usePerson(); 
+  const { addUser, signIn, currentUser } = usePerson(); 
   const [isSignUp, setIsSignUp] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
@@ -20,17 +20,14 @@ const AuthForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignUp) {
-      // Handle Sign Up Logic
-      if (formData.password !== formData.confirmPassword) {
+      if (formData.password !== formData.confirmPassword || formData.name.trim() === "") {
         alert("Passwords do not match!");
         return;
       }
       const newUser = new User(formData.name, formData.email, formData.password, formData.confirmPassword);
-      addUser(newUser); // Add new user to the context
-      console.log("New User Created:", newUser);
+      addUser(newUser);
     } else {
-      // Handle Sign In Logic
-      console.log("Sign In Data:", formData);
+      signIn(formData.email, formData.password)
     }
   };
 
